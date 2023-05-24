@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World Demo</title>
+    <script src="https://cdn.auth0.com/js/lock/11.17/lock.min.js"></script>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <button onclick="lock.show()">Log In</button>
+
+    <script>
+        var lock = new Auth0Lock(
+            'G11vYVvFsQ3Wg1lXXIe0g8usQk0MT8p1',
+            'dev-ysjxqcs3zmej1r2d.us.auth0.com',
+            {
+                auth: {
+                    sso: true,
+                    redirectUrl: window.location.href,
+                    responseType: 'token'
+                }
+            }
+        );
+
+        lock.on('authenticated', function(authResult) {
+            // Handle the authenticated user here
+            console.log(authResult);
+        });
+    </script>
+</body>
+</html>
+
